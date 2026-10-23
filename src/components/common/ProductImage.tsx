@@ -1,5 +1,5 @@
 import type { ImageAsset } from '../../types';
-import { ImagePlaceholder } from './ImagePlaceholder';
+import { StockImage } from './StockImage';
 import { cn } from '../../lib/utils';
 
 /** Product image on a light "studio" ground, or a labelled placeholder. */
@@ -9,7 +9,7 @@ export function ProductImage({ image, name, className, fit = 'contain', eager = 
       {image ? (
         <img src={image.src} alt={image.alt} loading={eager ? 'eager' : 'lazy'} decoding="async" className={cn('h-full w-full', fit === 'contain' ? 'object-contain p-3' : 'object-cover')} />
       ) : (
-        <ImagePlaceholder label={name} compact />
+        <StockImage label={name} />
       )}
     </div>
   );

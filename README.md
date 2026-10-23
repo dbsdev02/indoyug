@@ -39,7 +39,6 @@ npx serve dist              # or any static server that serves dir/index.html
 |---|---|
 | `VITE_SITE_URL` | Canonical domain, e.g. `https://www.indoyug.in` (canonicals, OG, sitemap) |
 | `VITE_ENQUIRY_ENDPOINT` | URL that receives form POSTs (see below). **Empty = forms show an honest "not connected" error with phone/email — never a fake success.** |
-| `VITE_SHOW_EDITOR_NOTES` | `true` while reviewing (shows amber "content pending" notes for the Indoyug team). **Set to `false` at launch.** |
 
 Anything prefixed `VITE_` is shipped to the browser — never put secrets in these.
 
@@ -52,7 +51,6 @@ Anything prefixed `VITE_` is shipped to the browser — never put secrets in the
 
 ## Deploy
 
-1. Set `VITE_SITE_URL`, `VITE_ENQUIRY_ENDPOINT`, `VITE_SHOW_EDITOR_NOTES=false`.
 2. `npm run build`.
 3. Upload `dist/` to the host (Netlify, Vercel, Cloudflare Pages, or cPanel `public_html` — `.htaccess` is included).
 4. Submit `https://www.indoyug.in/sitemap.xml` in Google Search Console.
@@ -64,7 +62,7 @@ Anything prefixed `VITE_` is shipped to the browser — never put secrets in the
 src/
   components/
     common/     SEO, Breadcrumbs, PageHero, SectionHeading, ProductCard, IndustryCard, ProjectCard,
-                CTASection, Accordion, Reveal, Notice/EditorNote, ImagePlaceholder, ProductImage
+                CTASection, Accordion, Reveal, Notice, StockImage, ProductImage
     forms/      EnquiryForm (quote / product / contact / short variants)
     layout/     Header (sticky, mega menu), MegaMenu, MobileMenu, Footer, ScrollToTop, nav
     products/   ProductGallery, ProductSpecifications, RelatedProducts
@@ -85,7 +83,7 @@ To add a product: append an object to `src/data/products.ts`. Its detail page, c
 ## Content rules followed
 
 - All specifications come from the brochure (V5). Where none are published the page says **"Specifications available on request"**.
-- Products the brochure only lists (no dedicated page) show a "detailed information coming soon" notice and a labelled photo placeholder — no stock photos of other manufacturers' equipment.
+- Products without brochure photography use representative stock photographs (Unsplash License) from `public/assets/stock/` — see `public/assets/stock/CREDITS.md`.
 - No prices, ratings, reviews, testimonials, client names, certificates or ISO/cGMP compliance claims are published. Product schema contains only name/description/image/brand/brochure specs.
 - Gallery items are labelled **"Brochure imagery"** and set to `noindex` until replaced by approved case studies.
 - Insights articles are marked **"Editorial draft · pending technical review"** and `noindex` until an engineer sets `reviewStatus: 'approved'`.

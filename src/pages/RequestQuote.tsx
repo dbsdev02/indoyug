@@ -3,9 +3,7 @@ import { Clock, FileText, Mail, Phone, ShieldCheck } from 'lucide-react';
 import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
-import { EditorNote } from '../components/common/Notice';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
-import { enquiryConfigured } from '../lib/enquiry';
 import { company } from '../data/company';
 import { getProduct } from '../data/products';
 
@@ -22,7 +20,6 @@ export default function RequestQuote() {
       <section className="py-14 md:py-16">
         <div className="container grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            {!enquiryConfigured && <EditorNote className="mb-6">The form backend is not connected (VITE_ENQUIRY_ENDPOINT is empty). Submissions will show an error with phone and email details rather than a false confirmation. See server/README.md.</EditorNote>}
             <div className="card p-6 md:p-8">
               <EnquiryForm key={slug ?? category ?? 'none'} variant="quote" kind="quote" productSlug={slug} defaultCategory={category} context="Request a quote page" />
             </div>

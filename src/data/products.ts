@@ -11,11 +11,12 @@ import type { ImageAsset, Product } from '../types';
  *  - Products the brochure merely lists (no dedicated page) are marked
  *    source: 'brochure-listed' and carry neutral, non-performance copy.
  *  - Images are crops of the brochure's own product imagery. Where none
- *    exists, `image` is omitted and a labelled placeholder is rendered.
+ *    exists, a representative stock photograph from /assets/stock is used.
  */
 
 const P = '/assets/products';
 const img = (file: string, alt: string, caption?: string): ImageAsset => ({ src: `${P}/${file}`, alt, caption });
+const stock = (file: string, alt: string): ImageAsset => ({ src: `/assets/stock/${file}.webp`, alt });
 const sheet = (name: string) => `/assets/resources/indoyug-${name}-product-sheet.pdf`;
 
 const ALL_CRITICAL = ['pharmaceutical-biotech', 'research-laboratories', 'chemical-process', 'food-beverage', 'cleanroom-facilities'];
@@ -116,6 +117,7 @@ export const products: Product[] = [
   {
     id: 'p-dispensing-booth',
     slug: 'dispensing-booth',
+    image: stock('cleanroom-production', 'Cleanroom production area with gowned operators and process equipment'),
     name: 'Dispensing Booth',
     category: 'cleanroom-equipment',
     source: 'brochure-listed',
@@ -135,6 +137,7 @@ export const products: Product[] = [
   {
     id: 'p-sampling-booth',
     slug: 'sampling-booth',
+    image: stock('cleanroom-facility', 'Cleanroom with gowned operators at stainless steel workbenches'),
     name: 'Sampling Booth',
     category: 'cleanroom-equipment',
     source: 'brochure-listed',
@@ -153,6 +156,7 @@ export const products: Product[] = [
   {
     id: 'p-rlaf',
     slug: 'reverse-laminar-air-flow-unit',
+    image: stock('cleanroom-assembly', 'Gowned operator handling materials in a cleanroom'),
     name: 'Reverse Laminar Air Flow Unit',
     category: 'cleanroom-equipment',
     source: 'brochure-listed',
@@ -172,6 +176,7 @@ export const products: Product[] = [
   {
     id: 'p-garment-cabinets',
     slug: 'garment-storage-cabinets',
+    image: stock('cleanroom-wipe-down', 'Gloved operator in cleanroom garments wiping a stainless steel surface'),
     name: 'Garment Storage Cabinets with UV Sterilisation',
     category: 'cleanroom-equipment',
     source: 'brochure-listed',
@@ -418,6 +423,7 @@ export const products: Product[] = [
   {
     id: 'p-wall-benches',
     slug: 'wall-benches',
+    image: stock('lab-bench-glassware', 'Laboratory wall bench with reagent shelving and base cabinets'),
     name: 'Wall Benches',
     category: 'laboratory-furniture',
     source: 'brochure-listed',
@@ -567,6 +573,7 @@ export const products: Product[] = [
   {
     id: 'p-mobile-storage',
     slug: 'mobile-storage-units',
+    image: stock('lab-shelving', 'Laboratory shelving loaded with glassware'),
     name: 'Mobile Storage Units',
     category: 'laboratory-furniture',
     source: 'brochure-listed',
@@ -585,6 +592,7 @@ export const products: Product[] = [
   {
     id: 'p-lab-chairs',
     slug: 'laboratory-chairs-and-stools',
+    image: stock('lab-stools', 'Laboratory benches with stools'),
     name: 'Laboratory Chairs & Stools',
     category: 'laboratory-furniture',
     source: 'brochure-listed',
@@ -603,6 +611,7 @@ export const products: Product[] = [
   {
     id: 'p-lab-accessories',
     slug: 'laboratory-accessories',
+    image: stock('lab-bench-pipettes', 'Laboratory bench with pipettes, racks and reagent shelving'),
     name: 'Laboratory Accessories',
     category: 'laboratory-furniture',
     source: 'brochure-listed',
@@ -729,6 +738,7 @@ export const products: Product[] = [
   {
     id: 'p-ss-racks',
     slug: 'ss-slotted-angle-racks',
+    image: stock('lab-shelving', 'Laboratory shelving racks with glassware'),
     name: 'Slotted Angle Racks in SS Construction',
     category: 'ss-modular-furniture',
     source: 'brochure-listed',
@@ -787,6 +797,7 @@ export const products: Product[] = [
   {
     id: 'p-crossover',
     slug: 'cross-over-bench',
+    image: stock('cleanroom-facility', 'Cleanroom corridor with seating benches and stainless steel tables'),
     name: 'Cross Over Bench',
     category: 'ss-modular-furniture',
     source: 'brochure-listed',
@@ -806,6 +817,7 @@ export const products: Product[] = [
   {
     id: 'p-ss-inspection',
     slug: 'ss-visual-inspection-table',
+    image: stock('metal-inspection', 'Technician inspecting a machined metal part at a workstation'),
     name: 'SS Visual Inspection Table',
     category: 'ss-modular-furniture',
     source: 'brochure-listed',
@@ -824,6 +836,7 @@ export const products: Product[] = [
   {
     id: 'p-ss-stools',
     slug: 'ss-stools-and-chairs',
+    image: stock('lab-stools', 'Laboratory benches with stools'),
     name: 'Stools & Chairs in SS Construction',
     category: 'ss-modular-furniture',
     source: 'brochure-listed',
@@ -865,6 +878,7 @@ export const products: Product[] = [
   {
     id: 'p-airflow',
     slug: 'cleanroom-airflow-solutions',
+    image: stock('cleanroom-production', 'Cleanroom with ceiling air diffusers and flush lighting'),
     name: 'Cleanroom Airflow Solutions',
     category: 'hvac-cleanroom',
     source: 'brochure-listed',

@@ -3,7 +3,6 @@ import { ClipboardCheck, FileCheck2, FileSearch, Gauge, ScanSearch, ShieldQuesti
 import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
-import { EditorNote } from '../components/common/Notice';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
 import { company } from '../data/company';
@@ -56,7 +55,6 @@ export default function Quality() {
             </div>
             <Link to="/contact-us" className="btn-outline shrink-0">Ask about documentation</Link>
           </div>
-          <EditorNote className="mt-6">The brochure mentions “international standards”, “cGMP” and “ISO Class 5 / Grade A” in places. These are not stated as company certifications here until supporting documents are supplied.</EditorNote>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import type { Industry } from '../../types';
-import { ImagePlaceholder } from './ImagePlaceholder';
+import { StockImage } from './StockImage';
 
 export function IndustryCard({ industry, index }: { industry: Industry; index?: number }) {
   return (
@@ -10,7 +10,7 @@ export function IndustryCard({ industry, index }: { industry: Industry; index?: 
         {industry.image ? (
           <img src={industry.image.src} alt={industry.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
         ) : (
-          <ImagePlaceholder label={industry.name} compact />
+          <StockImage label={industry.name} />
         )}
       </div>
       <div className="flex flex-1 flex-col p-5">

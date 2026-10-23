@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import type { Project } from '../../types';
-import { ImagePlaceholder } from './ImagePlaceholder';
+import { StockImage } from './StockImage';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -9,7 +9,7 @@ export function ProjectCard({ project }: { project: Project }) {
         {project.image ? (
           <img src={project.image.src} alt={project.image.alt} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
         ) : (
-          <ImagePlaceholder label={project.title} compact />
+          <StockImage label={project.title} />
         )}
         {project.status === 'reference-imagery' && (
           <span className="absolute left-3 top-3 rounded-sm bg-white/95 px-2 py-1 font-mono text-[10px] uppercase tracking-wider text-amber-800 shadow-sm">Brochure imagery</span>

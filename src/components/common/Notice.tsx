@@ -13,17 +13,3 @@ export function Notice({ tone = 'info', title, children, className }: { tone?: '
   );
 }
 
-/**
- * Internal note for the Indoyug team about missing content. Visible while the
- * site is under review; hide at launch with VITE_SHOW_EDITOR_NOTES=false.
- */
-export const showEditorNotes = (import.meta.env.VITE_SHOW_EDITOR_NOTES as string | undefined) !== 'false';
-
-export function EditorNote({ children, className }: { children: ReactNode; className?: string }) {
-  if (!showEditorNotes) return null;
-  return (
-    <Notice tone="pending" title="Content pending (editor note)" className={className}>
-      {children}
-    </Notice>
-  );
-}

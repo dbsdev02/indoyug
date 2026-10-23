@@ -4,8 +4,7 @@ import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Reveal } from '../components/common/Reveal';
-import { EditorNote } from '../components/common/Notice';
-import { ImagePlaceholder } from '../components/common/ImagePlaceholder';
+import { StockImage } from '../components/common/StockImage';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
 import { company } from '../data/company';
@@ -21,6 +20,14 @@ const capabilities = [
   { icon: Cog, title: 'Quality control & documentation', text: 'FAT documentation and calibration records accompany supplied units. Details of documentation per product are shared at quotation stage.' },
 ];
 
+const gallery = [
+  ['Stainless steel fabrication & welding', '/assets/stock/ss-welding.webp'],
+  ['Grinding & finishing', '/assets/stock/metal-finishing.webp'],
+  ['Cleanroom equipment assembly', '/assets/stock/cleanroom-assembly.webp'],
+  ['Machining & fabrication workshop', '/assets/stock/fabrication-workshop.webp'],
+  ['Inspection & testing', '/assets/stock/metal-inspection.webp'],
+];
+
 export default function Manufacturing() {
   const crumbs = [{ label: 'Manufacturing' }];
   return (
@@ -30,7 +37,7 @@ export default function Manufacturing() {
 
       <section className="py-16 md:py-20">
         <div className="container">
-          <SectionHeading eyebrow="What we do" title="Capabilities" intro="Each capability below is described in the Indoyug brochure. Facility details — machinery, floor area and capacity — will be added once confirmed." />
+          <SectionHeading eyebrow="What we do" title="Capabilities" intro="Each capability below is described in the Indoyug brochure." />
           <div className="grid gap-px overflow-hidden rounded border border-surface-line bg-surface-line md:grid-cols-2 lg:grid-cols-4">
             {capabilities.map(({ icon: Icon, title, text }, i) => (
               <Reveal key={title} delay={(i % 4) * 60} className="bg-white p-6">
@@ -46,15 +53,15 @@ export default function Manufacturing() {
       <section className="bg-surface py-16 md:py-20">
         <div className="container">
           <SectionHeading eyebrow="Facility gallery" title="Inside the Umbergaon facility" />
-          <EditorNote className="mb-8">Factory photographs (fabrication, welding, electropolishing, assembly and testing) are to be supplied by Indoyug. The placeholders below will be replaced with real images — we do not use stock factory photography.</EditorNote>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <figure className="overflow-hidden rounded border border-surface-line bg-white">
               <img src="/assets/products/stainless-steel-modular-furniture.webp" alt="Stainless steel trolleys, cabinets and racks" loading="lazy" className="aspect-[4/3] w-full object-cover" />
               <figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">SS modular furniture · brochure imagery</figcaption>
             </figure>
-            {['Stainless steel fabrication & welding', 'Electropolishing & finishing', 'Cleanroom equipment assembly', 'Laboratory furniture production', 'Factory acceptance testing'].map((l) => (
-              <figure key={l} className="overflow-hidden rounded border border-dashed border-brand-200 bg-white">
-                <div className="aspect-[4/3]"><ImagePlaceholder label={l} /></div>
+            {gallery.map(([l, src]) => (
+              <figure key={l} className="overflow-hidden rounded border border-surface-line bg-white">
+                <div className="aspect-[4/3]"><StockImage label={l} src={src} /></div>
+                <figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">{l}</figcaption>
               </figure>
             ))}
           </div>

@@ -3,7 +3,6 @@ import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Reveal } from '../components/common/Reveal';
 import { ProjectCard } from '../components/common/ProjectCard';
-import { Notice } from '../components/common/Notice';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
 import { company } from '../data/company';
@@ -55,7 +54,6 @@ export default function TurnkeyProjects() {
       <section className="bg-surface py-16 md:py-20">
         <div className="container">
           <SectionHeading eyebrow="Gallery" title="Cleanroom and laboratory environments" />
-          <Notice tone="pending" className="mb-8">Images are from the Indoyug brochure and are not documented installations. Completed project case studies will be added once client approval is in place.</Notice>
           <div className="grid gap-6 md:grid-cols-3">{projects.filter((p) => ['Turnkey projects', 'Cleanroom installations'].includes(p.category)).slice(0, 3).map((p) => <ProjectCard key={p.slug} project={p} />)}</div>
         </div>
       </section>

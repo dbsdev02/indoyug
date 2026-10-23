@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ImageAsset } from '../../types';
-import { ImagePlaceholder } from '../common/ImagePlaceholder';
+import { StockImage } from '../common/StockImage';
 import { cn } from '../../lib/utils';
 
 export function ProductGallery({ images, name }: { images: ImageAsset[]; name: string }) {
@@ -8,7 +8,7 @@ export function ProductGallery({ images, name }: { images: ImageAsset[]; name: s
   if (!images.length) {
     return (
       <div className="ticks aspect-[4/3] border border-surface-line">
-        <ImagePlaceholder label={name} />
+        <StockImage label={name} />
       </div>
     );
   }
@@ -16,7 +16,7 @@ export function ProductGallery({ images, name }: { images: ImageAsset[]; name: s
   return (
     <div>
       <figure className="ticks relative border border-surface-line bg-gradient-to-b from-surface to-white">
-        <img src={current.src} alt={current.alt} className="aspect-[4/3] w-full object-contain p-4" />
+        <img src={current.src} alt={current.alt} className={cn('aspect-[4/3] w-full', current.src.includes('/stock/') ? 'object-cover' : 'object-contain p-4')} />
         {current.caption && <figcaption className="border-t border-surface-line bg-white px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-steel">{current.caption}</figcaption>}
       </figure>
       {images.length > 1 && (

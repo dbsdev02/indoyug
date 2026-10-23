@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, BadgeCheck, ClipboardCheck, Factory, Layers, Mail, MapPin, Phone, Ruler, Wind, Wrench } from 'lucide-react';
 import { SEO, organizationJsonLd } from '../components/common/SEO';
+import { HeroSlider } from '../components/home/HeroSlider';
+import { CountUp } from '../components/home/CountUp';
 import { Reveal } from '../components/common/Reveal';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { ProductCard } from '../components/common/ProductCard';
@@ -19,6 +21,8 @@ const credentials = [
   { value: '3-in-1', label: 'HVAC, cleanroom & laboratory turnkey projects under one roof', icon: Layers },
   { value: 'Custom', label: 'Standard and custom sizes across the range', icon: Ruler },
 ];
+
+const marquee = ['Air showers', 'Mist showers', 'Pass boxes', 'Cleanroom doors', 'Laminar air flow units', 'Biosafety cabinets', 'Fume hoods', 'Laboratory furniture', 'SS modular furniture', 'HVAC & turnkey projects'];
 
 const process = [
   { n: '01', title: 'Consultation & design', text: 'Planning and designing around your process, room data and layout.' },
@@ -46,35 +50,32 @@ export default function Home() {
       />
 
       {/* 1–5 HERO */}
-      <section className="relative overflow-hidden bg-brand-950 text-white">
-        <img src="/assets/projects/microbiology-cleanroom-lab.webp" alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/80 to-brand-950/55 lg:via-brand-950/70 lg:to-transparent" aria-hidden />
-        <div className="bg-blueprint-dark absolute inset-0 opacity-60 [mask-image:linear-gradient(to_right,black_30%,transparent_70%)]" aria-hidden />
-        <div className="container relative grid min-h-[600px] items-center py-20 lg:min-h-[640px]">
-          <div className="max-w-2xl">
-            <p className="eyebrow mb-5 flex items-center gap-3 text-teal-400"><span className="h-px w-8 bg-teal-400" aria-hidden />Cleanroom · Laboratory · HVAC</p>
-            <h1 className="text-[2.6rem] font-extrabold leading-[1.02] text-white sm:text-6xl lg:text-[4.25rem]">
-              Engineered Cleanroom &amp; Laboratory Solutions
-            </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
-              Purpose-built cleanroom equipment, laboratory furniture and stainless steel systems for demanding controlled environments — manufactured in Umbergaon, Gujarat and delivered as complete turnkey projects.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link to="/request-a-quote" className="btn-accent px-6 py-3.5 text-base">Request a Quote <ArrowRight className="h-4 w-4" aria-hidden /></Link>
-              <Link to="/products" className="btn-ghost-light px-6 py-3.5 text-base">Explore Our Products</Link>
-            </div>
-          </div>
+      <HeroSlider />
+
+      {/* MARQUEE */}
+      <section aria-label="What we make" className="marquee overflow-hidden border-b border-brand-800 bg-brand-900 py-3.5 text-white">
+        <div className="marquee-track flex" aria-hidden>
+          {[0, 1].map((k) => (
+            <ul key={k} className="flex shrink-0 items-center">
+              {marquee.map((m) => (
+                <li key={m} className="flex items-center gap-6 px-6 font-display text-sm font-semibold uppercase tracking-[0.14em] text-white/85">
+                  {m}<span className="h-1.5 w-1.5 rotate-45 bg-teal-400" />
+                </li>
+              ))}
+            </ul>
+          ))}
         </div>
+        <p className="sr-only">{marquee.join(', ')}</p>
       </section>
 
       {/* 6 CREDIBILITY STRIP */}
       <section aria-label="Company credentials" className="border-b border-surface-line bg-white">
         <div className="container grid divide-y divide-surface-line sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
           {credentials.map(({ value, label, icon: Icon }, i) => (
-            <Reveal key={label} delay={i * 70} className="flex items-start gap-4 py-7 sm:px-6 lg:first:pl-0">
-              <Icon className="mt-1 h-6 w-6 shrink-0 text-brand-500" aria-hidden />
+            <Reveal key={label} delay={i * 90} className="group flex items-start gap-4 py-7 sm:px-6 lg:first:pl-0">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-500 transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-500 group-hover:text-white"><Icon className="h-5 w-5" aria-hidden /></span>
               <div>
-                <p className="font-display text-3xl font-extrabold text-brand-800">{value}</p>
+                <p className="font-display text-3xl font-extrabold text-brand-800"><CountUp value={value} /></p>
                 <p className="mt-1 text-sm leading-snug text-ink-soft">{label}</p>
               </div>
             </Reveal>
@@ -89,10 +90,11 @@ export default function Home() {
             action={<Link to="/products" className="btn-outline">View all products <ArrowRight className="h-4 w-4" aria-hidden /></Link>} />
           <div className="grid gap-px overflow-hidden rounded border border-surface-line bg-surface-line sm:grid-cols-2 lg:grid-cols-3">
             {categories.map((c, i) => (
-              <Reveal key={c.id} delay={(i % 3) * 80} className="bg-white">
-                <Link to={`/products?category=${c.id}`} className="group flex h-full flex-col">
-                  <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-b from-surface to-white">
-                    {c.image && <img src={c.image} alt="" loading="lazy" className="h-full w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]" />}
+              <Reveal key={c.id} delay={(i % 3) * 100} className="reveal-zoom bg-white">
+                <Link to={`/products?category=${c.id}`} className="group relative flex h-full flex-col transition-colors hover:bg-brand-50/40">
+                  <span className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-brand-500 transition-transform duration-500 group-hover:scale-x-100" aria-hidden />
+                  <div className="sheen relative aspect-[16/10] overflow-hidden bg-gradient-to-b from-surface to-white">
+                    {c.image && <img src={c.image} alt="" loading="lazy" className="h-full w-full object-contain p-6 transition-transform duration-700 group-hover:-translate-y-1 group-hover:scale-[1.07]" />}
                     <span className="absolute left-5 top-4 font-mono text-xs text-brand-500">{String(i + 1).padStart(2, '0')}</span>
                   </div>
                   <div className="flex flex-1 flex-col border-t border-surface-line p-6">
@@ -113,7 +115,7 @@ export default function Home() {
           <SectionHeading eyebrow="Featured equipment" title="Built for critical environments" intro="Specifications on each product page are taken directly from the Indoyug brochure." />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {featuredProducts.filter((p) => p.image?.src.includes('/products/')).slice(0, 8).map((p, i) => (
-              <Reveal key={p.slug} delay={(i % 4) * 70}><ProductCard product={p} /></Reveal>
+              <Reveal key={p.slug} delay={(i % 4) * 90}><div className="lift h-full rounded"><ProductCard product={p} /></div></Reveal>
             ))}
           </div>
         </div>
@@ -126,19 +128,24 @@ export default function Home() {
           <div>
             <SectionHeading light eyebrow="Manufacturing" title="Engineered and built in-house" intro="Indoyug combines cleanroom equipment, laboratory furniture and stainless steel furniture manufacturing capability — so project teams deal with one accountable supplier." className="mb-8" />
             <ul className="grid gap-6 sm:grid-cols-2">
-              {capabilities.map(({ icon: Icon, title, text }) => (
-                <li key={title} className="border-t border-white/15 pt-5">
-                  <Icon className="h-6 w-6 text-teal-400" aria-hidden />
+              {capabilities.map(({ icon: Icon, title, text }, i) => (
+                <Reveal as="li" key={title} delay={i * 100} className="reveal-left group relative border-t border-white/15 pt-5">
+                  <span className="grow-bar absolute -top-px left-0 h-px w-16 bg-teal-400" aria-hidden />
+                  <Icon className="h-6 w-6 text-teal-400 transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" aria-hidden />
                   <h3 className="mt-3 text-lg font-bold text-white">{title}</h3>
                   <p className="mt-1.5 text-[15px] leading-relaxed text-white/70">{text}</p>
-                </li>
+                </Reveal>
               ))}
             </ul>
             <Link to="/manufacturing" className="btn-white mt-10">Manufacturing capabilities <ArrowRight className="h-4 w-4" aria-hidden /></Link>
           </div>
-          <Reveal className="relative">
-            <img src="/assets/manufacturing/stainless-steel-lab-benches.webp" alt="Stainless steel laboratory workstations with integrated sinks" loading="lazy" className="aspect-[4/5] w-full rounded object-cover lg:aspect-[5/6]" />
-            <p className="absolute bottom-0 left-0 right-0 bg-brand-950/80 px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider text-white/75">Brochure imagery · factory photographs to be added</p>
+          <Reveal className="reveal-right relative">
+            <div className="overflow-hidden rounded"><img src="/assets/manufacturing/stainless-steel-lab-benches.webp" alt="Stainless steel laboratory workstations with integrated sinks" loading="lazy" className="aspect-[4/5] w-full object-cover transition-transform duration-[1500ms] hover:scale-105 lg:aspect-[5/6]" /></div>
+            <div className="float-y absolute -left-3 top-8 rounded bg-white px-5 py-4 text-brand-900 shadow-lift sm:-left-8">
+              <p className="font-display text-3xl font-extrabold text-brand-700"><CountUp value={company.yearsExperience} /></p>
+              <p className="font-mono text-[10.5px] uppercase tracking-wider text-steel">Years of experience</p>
+            </div>
+            <p className="absolute bottom-0 left-0 right-0 bg-brand-950/80 px-4 py-2.5 font-mono text-[11px] uppercase tracking-wider text-white/75">Brochure imagery</p>
           </Reveal>
         </div>
       </section>
@@ -152,13 +159,13 @@ export default function Home() {
           </div>
           <ul className="grid gap-px self-start overflow-hidden rounded border border-surface-line bg-surface-line sm:grid-cols-2 lg:col-span-7">
             {brochurePillars.map((p, i) => (
-              <li key={p} className="flex items-center gap-4 bg-white px-5 py-5">
-                <span className="font-mono text-xs text-brand-500">{String(i + 1).padStart(2, '0')}</span>
-                <span className="font-display text-[17px] font-semibold">{p}</span>
-              </li>
+              <Reveal as="li" key={p} delay={i * 60} className="group flex items-center gap-4 bg-white px-5 py-5 transition-colors hover:bg-brand-50">
+                <span className="font-mono text-xs text-brand-500 transition-transform group-hover:scale-125">{String(i + 1).padStart(2, '0')}</span>
+                <span className="font-display text-[17px] font-semibold transition-transform group-hover:translate-x-1">{p}</span>
+              </Reveal>
             ))}
             <li className="flex items-center bg-brand-700 px-5 py-5">
-              <Link to="/about-us" className="flex w-full items-center justify-between font-display text-[17px] font-semibold text-white">About Indoyug <ArrowRight className="h-5 w-5" aria-hidden /></Link>
+              <Link to="/about-us" className="group flex w-full items-center justify-between font-display text-[17px] font-semibold text-white">About Indoyug <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden /></Link>
             </li>
           </ul>
         </div>
@@ -170,11 +177,11 @@ export default function Home() {
           <SectionHeading eyebrow="Industries" title="Serving contamination-sensitive industries" intro="Customised cleanroom and laboratory solutions backed by our SS furniture manufacturing capability."
             action={<Link to="/industries" className="btn-outline">All industries <ArrowRight className="h-4 w-4" aria-hidden /></Link>} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {industries.slice(0, 4).map((ind, i) => <Reveal key={ind.slug} delay={i * 70}><IndustryCard industry={ind} index={i} /></Reveal>)}
+            {industries.slice(0, 4).map((ind, i) => <Reveal key={ind.slug} delay={i * 90} className="reveal-zoom"><div className="lift h-full rounded"><IndustryCard industry={ind} index={i} /></div></Reveal>)}
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             {industries.slice(4).map((ind) => (
-              <Link key={ind.slug} to={`/industries/${ind.slug}`} className="rounded-full border border-surface-line bg-white px-4 py-2 text-sm font-semibold text-ink hover:border-brand-500 hover:text-brand-700">{ind.name}</Link>
+              <Link key={ind.slug} to={`/industries/${ind.slug}`} className="rounded-full border border-surface-line bg-white px-4 py-2 text-sm font-semibold text-ink transition-all hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-700 hover:shadow-card">{ind.name}</Link>
             ))}
           </div>
         </div>
@@ -187,11 +194,11 @@ export default function Home() {
             action={<Link to="/turnkey-projects" className="btn-outline">Turnkey projects <ArrowRight className="h-4 w-4" aria-hidden /></Link>} />
           <ol className="grid gap-px overflow-hidden rounded border border-surface-line bg-surface-line md:grid-cols-5">
             {process.map((s, i) => (
-              <Reveal as="li" key={s.n} delay={i * 70} className="relative bg-white p-6">
-                <span className="font-mono text-sm font-medium text-brand-500">{s.n}</span>
+              <Reveal as="li" key={s.n} delay={i * 120} className="group relative bg-white p-6 transition-colors hover:bg-brand-50/50">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-brand-200 font-mono text-sm font-medium text-brand-500 transition-all duration-300 group-hover:border-brand-500 group-hover:bg-brand-500 group-hover:text-white">{s.n}</span>
                 <h3 className="mt-3 text-lg font-bold">{s.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{s.text}</p>
-                <span className="absolute bottom-0 left-0 h-1 bg-brand-500" style={{ width: `${(i + 1) * 20}%` }} aria-hidden />
+                <span className="grow-bar absolute bottom-0 left-0 h-1 bg-brand-500" style={{ width: `${(i + 1) * 20}%` }} aria-hidden />
               </Reveal>
             ))}
           </ol>
@@ -203,7 +210,7 @@ export default function Home() {
         <div className="container">
           <SectionHeading eyebrow="Projects & gallery" title="Cleanroom and laboratory environments" intro="Imagery from the Indoyug brochure. Documented case studies will be published here once approved."
             action={<Link to="/projects" className="btn-outline">View gallery <ArrowRight className="h-4 w-4" aria-hidden /></Link>} />
-          <div className="grid gap-6 md:grid-cols-3">{projects.slice(0, 3).map((p, i) => <Reveal key={p.slug} delay={i * 80}><ProjectCard project={p} /></Reveal>)}</div>
+          <div className="grid gap-6 md:grid-cols-3">{projects.slice(0, 3).map((p, i) => <Reveal key={p.slug} delay={i * 100} className="reveal-zoom"><div className="lift h-full rounded"><ProjectCard project={p} /></div></Reveal>)}</div>
         </div>
       </section>
 

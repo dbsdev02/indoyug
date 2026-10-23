@@ -2,7 +2,6 @@ import { Clock, ExternalLink, Mail, MapPin, Phone } from 'lucide-react';
 import { SEO, organizationJsonLd } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
-import { EditorNote } from '../components/common/Notice';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
 import { company } from '../data/company';
 
@@ -22,8 +21,7 @@ export default function ContactUs() {
               <div className="flex gap-4 p-6"><Mail className="mt-1 h-5 w-5 shrink-0 text-brand-500" aria-hidden /><div><p className="font-mono text-[10.5px] uppercase tracking-wider text-steel">Email</p><a href={`mailto:${company.email}`} className="text-lg font-semibold text-brand-800 hover:underline">{company.email}</a></div></div>
               <div className="flex gap-4 p-6"><Clock className="mt-1 h-5 w-5 shrink-0 text-brand-500" aria-hidden /><div><p className="font-mono text-[10.5px] uppercase tracking-wider text-steel">Business hours</p><p className="text-ink-soft">Please call ahead before visiting.</p></div></div>
             </address>
-            <EditorNote>Confirm business hours and the exact Google Maps pin before publishing. The map below searches the brochure address; the directions link uses the Maps listing from the current website.</EditorNote>
-            <figure className="overflow-hidden rounded border border-surface-line"><img src="/assets/projects/cleanroom-corridor-doors.webp" alt="Cleanroom corridor with doors" loading="lazy" className="aspect-[16/9] w-full object-cover" /><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">Brochure imagery · facility photograph to be supplied</figcaption></figure>
+            <figure className="overflow-hidden rounded border border-surface-line"><img src="/assets/projects/cleanroom-corridor-doors.webp" alt="Cleanroom corridor with doors" loading="lazy" className="aspect-[16/9] w-full object-cover" /><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">Brochure imagery</figcaption></figure>
           </div>
           <div className="lg:col-span-7">
             <div className="card p-6 md:p-8">

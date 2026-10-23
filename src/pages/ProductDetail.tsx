@@ -2,12 +2,11 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, Check, Download, FileQuestion, Layers, Phone, ShieldCheck } from 'lucide-react';
 import { SEO } from '../components/common/SEO';
 import { Breadcrumbs, breadcrumbJsonLd } from '../components/common/Breadcrumbs';
-import { Notice } from '../components/common/Notice';
 import { ProductGallery } from '../components/products/ProductGallery';
 import { ProductSpecifications } from '../components/products/ProductSpecifications';
 import { RelatedProducts } from '../components/products/RelatedProducts';
 import { EnquiryForm } from '../components/forms/EnquiryForm';
-import { ImagePlaceholder } from '../components/common/ImagePlaceholder';
+import { StockImage } from '../components/common/StockImage';
 import { getProduct } from '../data/products';
 import { getCategory } from '../data/categories';
 import { getIndustry } from '../data/industries';
@@ -26,7 +25,7 @@ export default function ProductDetail() {
   const path = `/products/${product.slug}`;
 
   // Product schema only with real data: name, description, image, brand. No price/rating.
-  const productLd = product.image
+  const productLd = product.image && !product.image.src.includes('/stock/')
     ? {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -117,11 +116,6 @@ export default function ProductDetail() {
         <div className="space-y-16 lg:col-span-8">
           <section id="overview" aria-labelledby="h-overview">
             <h2 id="h-overview" className="mb-5 text-2xl font-bold md:text-3xl">Overview</h2>
-            {product.source === 'brochure-listed' && (
-              <Notice tone="pending" className="mb-6" title="Detailed product information coming soon">
-                This product is part of the Indoyug range listed in our brochure. Detailed specifications and photographs are being prepared — contact us for current information.
-              </Notice>
-            )}
             <div className="prose-body max-w-prose">{product.description.map((p, i) => <p key={i}>{p}</p>)}</div>
           </section>
 
@@ -145,7 +139,7 @@ export default function ProductDetail() {
                 {product.variants.map((v) => (
                   <li key={v.name} className="card overflow-hidden">
                     {product.variants!.some((x) => x.image) && (
-                      <div className="aspect-[4/3] bg-surface">{v.image ? <img src={v.image} alt={v.name} loading="lazy" className="h-full w-full object-cover" /> : <ImagePlaceholder label={v.name} compact />}</div>
+                      <div className="aspect-[4/3] bg-surface">{v.image ? <img src={v.image} alt={v.name} loading="lazy" className="h-full w-full object-cover" /> : <StockImage label={v.name} />}</div>
                     )}
                     <div className="p-4"><h3 className="font-bold">{v.name}</h3>{v.description && <p className="mt-1 text-sm text-ink-soft">{v.description}</p>}</div>
                   </li>

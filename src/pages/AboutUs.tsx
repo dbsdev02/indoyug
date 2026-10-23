@@ -4,7 +4,6 @@ import { SEO } from '../components/common/SEO';
 import { PageHero } from '../components/common/PageHero';
 import { SectionHeading } from '../components/common/SectionHeading';
 import { Reveal } from '../components/common/Reveal';
-import { EditorNote } from '../components/common/Notice';
 import { CTASection } from '../components/common/CTASection';
 import { breadcrumbJsonLd } from '../components/common/Breadcrumbs';
 import { company, brochurePillars } from '../data/company';
@@ -39,7 +38,6 @@ export default function AboutUs() {
                 <div key={k} className="bg-white p-5"><dt className="font-mono text-[10.5px] uppercase tracking-wider text-steel">{k}</dt><dd className="mt-1 font-display text-lg font-bold">{v}</dd></div>
               ))}
             </dl>
-            <EditorNote className="mt-6">Company history, vision &amp; mission: Founding year, milestones and an approved vision and mission statement will be added once provided by Indoyug. We do not publish unverified figures.</EditorNote>
           </aside>
         </div>
       </section>
@@ -88,7 +86,7 @@ export default function AboutUs() {
           <div className="mt-12 grid gap-4 md:grid-cols-3">
             <figure className="overflow-hidden rounded border border-surface-line bg-white"><img src="/assets/projects/microbiology-cleanroom-lab.webp" alt="Cleanroom laboratory with LAF unit and benches" loading="lazy" className="aspect-[4/3] w-full object-cover" /><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">Brochure imagery</figcaption></figure>
             <figure className="overflow-hidden rounded border border-surface-line bg-white"><img src="/assets/manufacturing/stainless-steel-lab-benches.webp" alt="Stainless steel laboratory workstations" loading="lazy" className="aspect-[4/3] w-full object-cover" /><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">Brochure imagery</figcaption></figure>
-            <figure className="flex flex-col overflow-hidden rounded border border-dashed border-brand-200 bg-white"><div className="bg-blueprint flex aspect-[4/3] items-center justify-center bg-surface p-6 text-center"><span className="font-display font-semibold text-brand-800">Facility photograph — Umbergaon works</span></div><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-amber-700">To be supplied</figcaption></figure>
+            <figure className="overflow-hidden rounded border border-surface-line bg-white"><img src="/assets/stock/ss-welding.webp" alt="Welder fabricating a perforated stainless steel sheet" loading="lazy" className="aspect-[4/3] w-full object-cover" /><figcaption className="px-4 py-2 font-mono text-[10.5px] uppercase tracking-wider text-steel">Fabrication &amp; welding</figcaption></figure>
           </div>
         </div>
       </section>
