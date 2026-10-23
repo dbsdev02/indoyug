@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 6rem; }
+  body { @apply bg-white font-sans text-ink antialiased; font-size: 16px; line-height: 1.6; }
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.015em; line-height: 1.12; }
+  ::selection { background: #B3D0EE; color: #082A52; }
+  :focus-visible { outline: 2px solid #087DBA; outline-offset: 2px; }
+  img { max-width: 100%; height: auto; }
+  /* Grid tracks must never be widened by long content (scrolling thumbnails, long <select> options) */
+  .grid > * { min-width: 0; }
+  select { max-width: 100%; }
+}
+
+@layer components {
+  .eyebrow { @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-brand-500; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded px-5 py-3 text-[15px] font-semibold transition-colors duration-150 disabled:cursor-not-allowed disabled:opacity-60; }
+  .btn-primary { @apply btn bg-brand-700 text-white hover:bg-brand-800; }
+  .btn-accent { @apply btn bg-brand-500 text-white hover:bg-brand-600; }
+  .btn-outline { @apply btn border border-brand-700 text-brand-700 hover:bg-brand-50; }
+  .btn-ghost-light { @apply btn border border-white/40 text-white hover:bg-white/10; }
+  .btn-white { @apply btn bg-white text-brand-800 hover:bg-brand-50; }
+  .link { @apply font-semibold text-brand-700 underline decoration-brand-200 underline-offset-4 hover:decoration-brand-700; }
+  .card { @apply rounded border border-surface-line bg-white; }
+  .field-label { @apply mb-1.5 block text-sm font-semibold text-ink; }
+  .field { @apply block w-full rounded border border-surface-line bg-white px-3.5 py-2.5 text-[15px] text-ink placeholder:text-steel-light focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25; }
+  .field-error { @apply mt-1 text-sm text-red-700; }
+  .prose-body p { @apply mb-4 text-[17px] leading-relaxed text-ink-soft; }
+  .prose-body h2 { @apply mb-3 mt-10 text-2xl font-bold; }
+  .prose-body ul { @apply mb-5 list-disc space-y-1.5 pl-5 text-[17px] text-ink-soft marker:text-brand-500; }
+}
+
+@layer utilities {
+  /* Blueprint grid used as a subtle engineering texture */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(rgba(6, 74, 145, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 74, 145, 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .bg-blueprint-dark {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  /* Corner tick marks, like a technical drawing frame */
+  .ticks { position: relative; }
+  .ticks::before, .ticks::after { content: ''; position: absolute; width: 14px; height: 14px; border-color: #087DBA; pointer-events: none; }
+  .ticks::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+  .ticks::after { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+  .scrollbar-thin { scrollbar-width: thin; }
+}
+
+/* Scroll reveal: content is visible without JS; only hidden once JS has run. */
+html.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+html.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
