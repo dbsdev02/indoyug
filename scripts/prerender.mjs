@@ -34,6 +34,10 @@ const REDIRECTS = {
   '/lockers-2': '/products/garment-storage-cabinets',
   '/storage-vessel': '/products/laboratory-sink-units', // old menu labelled this "Sink Unit"
   '/pressure-vessel': '/products/ss-trolleys', // old menu labelled this "Trolley"
+  // Renamed / merged products on this site
+  '/products/cleanroom-hvac-systems': '/products/cleanroom-systems',
+  '/products/mobile-storage-units': '/products/mobile-trolley',
+  '/products/ducting-and-accessories': '/products/cleanroom-doors',
 };
 
 function loadEnv() {

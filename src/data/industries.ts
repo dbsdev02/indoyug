@@ -79,7 +79,7 @@ export const industries: Industry[] = [
       { title: 'Clean air', text: 'LAF units and Class II Type A2 biosafety cabinets.' },
       { title: 'Stable platforms', text: 'Anti-vibration tables with stone tops and isolation mounts.' },
     ],
-    products: ['laboratory-furniture', 'island-benches', 'biosafety-cabinets', 'laminar-air-flow-units', 'anti-vibration-tables', 'mobile-storage-units'],
+    products: ['laboratory-furniture', 'island-benches', 'biosafety-cabinets', 'laminar-air-flow-units', 'anti-vibration-tables', 'mobile-trolley'],
     image: { src: '/assets/industries/biotech-research.webp', alt: 'Researcher pipetting samples at a laboratory bench' },
   },
   {
@@ -173,10 +173,10 @@ export const industries: Industry[] = [
     solutions: [
       { title: 'Cleanroom doors', text: 'Single, double, sliding, automatic, vision-panel, fire-rated and hermetic types.' },
       { title: 'Pass boxes and entry systems', text: 'Static/dynamic pass boxes, air and mist showers.' },
-      { title: 'HVAC and ducting', text: 'Cleanroom HVAC and SS / GI ducting.' },
+      { title: 'Cleanroom systems', text: 'Cleanroom systems, doors and accessories.' },
       { title: 'Turnkey delivery', text: 'One partner from design to support.' },
     ],
-    products: ['cleanroom-doors', 'dynamic-pass-box', 'air-shower', 'cleanroom-hvac-systems', 'ducting-and-accessories', 'cleanroom-turnkey-projects'],
+    products: ['cleanroom-doors', 'dynamic-pass-box', 'air-shower', 'cleanroom-systems', 'cleanroom-airflow-solutions', 'cleanroom-turnkey-projects'],
     image: { src: '/assets/industries/cleanroom-facilities.webp', alt: 'Empty cleanroom corridor with flush panels and doors' },
   },
 ];

@@ -139,7 +139,7 @@ export default function ProductDetail() {
                 {product.variants.map((v) => (
                   <li key={v.name} className="card overflow-hidden">
                     {product.variants!.some((x) => x.image) && (
-                      <div className="aspect-[4/3] bg-surface">{v.image ? <img src={v.image} alt={v.name} loading="lazy" className="h-full w-full object-cover" /> : <StockImage label={v.name} />}</div>
+                      <div className="aspect-[4/3] bg-surface">{v.image ? <img src={v.image} alt={v.name} loading="lazy" className="h-full w-full object-contain p-2" /> : <StockImage label={v.name} />}</div>
                     )}
                     <div className="p-4"><h3 className="font-bold">{v.name}</h3>{v.description && <p className="mt-1 text-sm text-ink-soft">{v.description}</p>}</div>
                   </li>

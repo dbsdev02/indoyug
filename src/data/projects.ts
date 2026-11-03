@@ -34,7 +34,7 @@ export const projects: Project[] = [
     status: 'reference-imagery',
     summary: 'Brochure imagery of a modular cleanroom enclosure with overhead ducting and process equipment.',
     image: { src: '/assets/projects/cleanroom-process-facility.webp', alt: 'Modular cleanroom facility with ducting' },
-    products: ['cleanroom-hvac-systems', 'ducting-and-accessories', 'cleanroom-doors'],
+    products: ['cleanroom-systems', 'cleanroom-airflow-solutions', 'cleanroom-doors'],
   },
   {
     slug: 'laboratory-island-benches',

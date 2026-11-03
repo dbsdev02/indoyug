@@ -49,7 +49,7 @@ export default function Products() {
         noindex={Boolean(query)}
         jsonLd={breadcrumbJsonLd(company.siteUrl, crumbs)}
       />
-      <PageHero crumbs={crumbs} eyebrow={`${products.length} products · 6 families`} title={title}
+      <PageHero crumbs={crumbs} eyebrow={`${products.length} products · ${categories.length} families`} title={title}
         intro={cat ? cat.description : 'Search and filter the complete Indoyug range. Request pricing for any product — every quote is configured to your requirement.'} />
 
       <section className="py-12 md:py-16">

@@ -86,11 +86,11 @@ export default function Home() {
       {/* 7 PRODUCT CATEGORIES */}
       <section className="bg-surface py-20 md:py-24">
         <div className="container">
-          <SectionHeading eyebrow="Product range" title="Six product families. One manufacturing partner." intro="From personnel entry systems to fume hoods and electropolished SS furniture — specify, configure and source the complete controlled-environment package from Indoyug."
+          <SectionHeading eyebrow="Product range" title="Four product families. One manufacturing partner." intro="From personnel entry systems to fume hoods and electropolished SS furniture — specify, configure and source the complete controlled-environment package from Indoyug."
             action={<Link to="/products" className="btn-outline">View all products <ArrowRight className="h-4 w-4" aria-hidden /></Link>} />
-          <div className="grid gap-px overflow-hidden rounded border border-surface-line bg-surface-line sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-px overflow-hidden rounded border border-surface-line bg-surface-line sm:grid-cols-2 lg:grid-cols-4">
             {categories.map((c, i) => (
-              <Reveal key={c.id} delay={(i % 3) * 100} className="reveal-zoom bg-white">
+              <Reveal key={c.id} delay={(i % 4) * 100} className="reveal-zoom bg-white">
                 <Link to={`/products?category=${c.id}`} className="group relative flex h-full flex-col transition-colors hover:bg-brand-50/40">
                   <span className="absolute inset-x-0 top-0 z-10 h-[3px] origin-left scale-x-0 bg-brand-500 transition-transform duration-500 group-hover:scale-x-100" aria-hidden />
                   <div className="sheen relative aspect-[16/10] overflow-hidden bg-gradient-to-b from-surface to-white">

@@ -16,7 +16,9 @@ export function ProductGallery({ images, name }: { images: ImageAsset[]; name: s
   return (
     <div>
       <figure className="ticks relative border border-surface-line bg-gradient-to-b from-surface to-white">
-        <img src={current.src} alt={current.alt} className={cn('aspect-[4/3] w-full', current.src.includes('/stock/') ? 'object-cover' : 'object-contain p-4')} />
+        <a href={current.src} target="_blank" rel="noopener" className="block cursor-zoom-in" aria-label={`Open full-size image: ${current.caption ?? current.alt}`}>
+          <img src={current.src} alt={current.alt} className={cn('aspect-[4/3] w-full', current.src.includes('/stock/') ? 'object-cover' : 'object-contain p-4')} />
+        </a>
         {current.caption && <figcaption className="border-t border-surface-line bg-white px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-steel">{current.caption}</figcaption>}
       </figure>
       {images.length > 1 && (

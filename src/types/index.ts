@@ -6,11 +6,9 @@
 
 export type CategoryId =
   | 'cleanroom-equipment'
-  | 'doors-pass-boxes'
-  | 'laf-biosafety'
   | 'laboratory-furniture'
   | 'ss-modular-furniture'
-  | 'hvac-cleanroom';
+  | 'cleanroom-solutions';
 
 export interface ProductCategory {
   id: CategoryId;

@@ -9,7 +9,7 @@ export function ProductsMegaMenu({ id, onNavigate }: { id: string; onNavigate: (
   return (
     <div id={id} className="border-t border-surface-line bg-white shadow-lift">
       <div className="container grid grid-cols-12 gap-8 py-8">
-        <div className="col-span-9 grid grid-cols-3 gap-x-8 gap-y-7">
+        <div className="col-span-9 grid grid-cols-4 gap-x-6 gap-y-7">
           {categories.map((c, i) => (
             <div key={c.id}>
               <Link to={`/products?category=${c.id}`} onClick={onNavigate} className="group mb-2.5 flex items-baseline gap-2 font-display text-[15px] font-bold text-ink hover:text-brand-700">
@@ -17,13 +17,13 @@ export function ProductsMegaMenu({ id, onNavigate }: { id: string; onNavigate: (
                 {c.name}
               </Link>
               <ul className="space-y-1.5 border-l border-surface-line pl-4">
-                {productsByCategory(c.id).slice(0, 6).map((p) => (
+                {productsByCategory(c.id).slice(0, 8).map((p) => (
                   <li key={p.slug}>
                     <Link to={`/products/${p.slug}`} onClick={onNavigate} className="text-[14px] text-ink-soft hover:text-brand-700">{p.name}</Link>
                   </li>
                 ))}
-                {productsByCategory(c.id).length > 6 && (
-                  <li><Link to={`/products?category=${c.id}`} onClick={onNavigate} className="text-[13px] font-semibold text-brand-700 hover:underline">+ {productsByCategory(c.id).length - 6} more</Link></li>
+                {productsByCategory(c.id).length > 8 && (
+                  <li><Link to={`/products?category=${c.id}`} onClick={onNavigate} className="text-[13px] font-semibold text-brand-700 hover:underline">+ {productsByCategory(c.id).length - 8} more</Link></li>
                 )}
               </ul>
             </div>
