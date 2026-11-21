@@ -3,3 +3,6 @@ dist
 .env
 .env.local
 *.log
+
+# original datasheet posters (58 MB PNG) - kept locally, site uses compressed WebP in public/assets/products/indoyug
+source-images/

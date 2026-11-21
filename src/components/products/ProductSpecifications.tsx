@@ -28,7 +28,7 @@ export function ProductSpecifications({ product }: { product: Product }) {
           ))}
         </tbody>
       </table>
-      <p className="border-t border-surface-line bg-white px-4 py-2.5 text-xs text-steel">Source: Indoyug product brochure. Standard values — custom configurations available on request.</p>
+      <p className="border-t border-surface-line bg-white px-4 py-2.5 text-xs text-steel">Source: Indoyug product brochure and datasheets. Standard values — custom configurations available on request.</p>
     </div>
   );
 }

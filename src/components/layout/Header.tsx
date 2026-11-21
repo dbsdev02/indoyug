@@ -21,7 +21,9 @@ export function Header() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // Hysteresis: shrinking the in-flow header moves the page by 12px, so a single threshold
+    // makes it flip between states. Shrink past 80px, grow back only near the top.
+    const onScroll = () => setScrolled((s) => (s ? window.scrollY > 4 : window.scrollY > 80));
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
