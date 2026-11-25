@@ -23,7 +23,7 @@ export function ProductSpecifications({ product }: { product: Product }) {
           {product.specifications.map((s, i) => (
             <tr key={s.label} className={i % 2 ? 'bg-white' : 'bg-surface/60'}>
               <th scope="row" className="block w-full px-4 pb-0 pt-3 align-top font-mono text-[12px] font-medium uppercase tracking-wider text-steel sm:table-cell sm:w-[38%] sm:py-3.5">{s.label}</th>
-              <td className="block px-4 pb-3 pt-1 font-medium text-ink sm:table-cell sm:py-3.5">{s.value}</td>
+              <td className="block px-4 pb-3 pt-1 whitespace-pre-line font-medium text-ink sm:table-cell sm:py-3.5">{s.value}</td>
             </tr>
           ))}
         </tbody>
